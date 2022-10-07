@@ -15,16 +15,16 @@ void m_pchar(stack_t **stack, unsigned int line_number)
 	if (va.stack_len < 1)
 	{
 		dprintf(STDOUT_FILENO,
-				"L%u: can't pchar, stack empty\n",
-				line_number);
+			"L%u: can't pchar, stack empty\n",
+			line_number);
 		exit(EXIT_FAILURE);
 	}
 	ch = (*stack)->n;
 	if (!isascii(ch))
 	{
 		dprintf(STDOUT_FILENO,
-				"L%u: can't pchar, value out of range\n",
-				line =_number);
+			"L%u: can't pchar, value out of range\n",
+			line =_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", ch);

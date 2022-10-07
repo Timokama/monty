@@ -9,8 +9,8 @@
  */
 void m_sub(stack_t **stack, unsigned int line_number)
 {
-	int n;
-
+	int n, m, flag;
+	
 	if (var.stack_len < 2)
 	{
 		dprintf(STDOUT_FILENO,
@@ -20,5 +20,10 @@ void m_sub(stack_t **stack, unsigned int line_number)
 	}
 	n = (*stack)->n;
 	m_pop(stack, line_number);
-	(*stack)->n -= n;
+	m = (*stack)->n;
+	m_pop(stack, line_number);
+	flag = var.queue;
+	var.queue = 0;
+	m_push2(stack, m - n);
+	var.queue = flag;
 }

@@ -19,5 +19,10 @@ void m_add(stack_t **stack, unsigned int line_number)
 	}
 	n += (*stack)->n;
 	m_pop(stack, line_number);
-	(*stack)->n += n;
+	n += (*stack)->n;
+	m_pop(stack, line_number);
+	flag = var.queue;
+	var.queue = 0;
+	m_push2(stack, n);
+	var.queue = flag;
 }

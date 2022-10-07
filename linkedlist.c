@@ -10,9 +10,9 @@
  *
  * Return: pointer to the new node, or on failure
  */
-stack_t *add_node(stack_t **stack, const int n)
+stack_t *add_node_end(stack_t **stack, const int n)
 {
-	stack_t *new;
+	stack_t *new, *temp;
 
 	if (stack == NULL)
 		return (NULL);
@@ -20,19 +20,17 @@ stack_t *add_node(stack_t **stack, const int n)
 	if (new == NULL)
 		return (NULL);
 	new->n = n;
+	new->next = NULL;
 	if (*stack == NULL)
 	{
 		new->prev = new;
-		new->next = new;
-	}
-	else
-	{
-		(*stack)->prev->next = new;
-		new->prev = (*stack)->prev;
-		(*stack)->prev = new;
-		new->next = *stack;
-	}
-	if (var.queue == STACK || var.stack_len == 0)
 		*stack = new;
+		return (new);
+	}
+	temp = *stack;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = new;
+	new->prev = temp;
 	return (new);
 }
