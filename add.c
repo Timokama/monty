@@ -8,7 +8,7 @@
  */
 void m_add(stack_t **stack, unsigned int line_number)
 {
-	int n = 0;
+	int n = 0, flag;
 
 	if (var.stack_len < 2)
 	{
