@@ -32,7 +32,7 @@ void m_push(stack_t **stack, unsigned int line_number)
 	char *arg;
 	int n;
 
-	arg = strtok(NULL, "\n\t\r");
+	arg = strtok(NULL, "\n\t\r ");
 	if (arg == NULL || check_for_digit(arg))
 	{
 		dprintf(STDOUT_FILENO,

@@ -1,7 +1,30 @@
 #include "monty.h"
-
 /**
- * add_node - add a new node to a circular linked list
+ * add_node_start - add a new node at the beginning of the linked list
+ * stack: double pointer to the beginning of the linked list
+ * @n: value to add to the new node
+ *
+ * Return: pointer to the new node, or null on failure
+ */
+stack_t *add_node_start(stack_t **stack, const int n)
+{
+	stack_t *new;
+
+	if (stack == NULL)
+		return (NULL);
+	new = malloc(sizeof(stack_t));
+	if (new ==  NULL)
+		return (NULL);
+	new->n = n;
+	new->prev = NULL;
+	new->next = *stack;
+	*stack = new;
+	if (new->next != NULL)
+		(new->next)->prev = new;
+	return (new);
+}
+/**
+ * add_node_end - add a new node to the end of the linked list
  * @stack: double pointer to the beginning of the linked list
  * @n: value to add to the new node
  *
